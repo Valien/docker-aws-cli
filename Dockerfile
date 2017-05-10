@@ -1,20 +1,10 @@
-FROM python:3-alpine
+FROM alpine:latest
 
 MAINTAINER Allen Vailliencourt <allen.vailliencourt@forty8fiftylabs.com>
 
-RUN apk update && apk upgrade && \
-    apk add py-pip groff && \
-    #addgroup -S awsgroup && adduser -sh awsuser -G awsgroup -D && \
-    pip install --upgrade awscli
+RUN apk --no-cache update && \
+    apk --no-cache add python py-pip py-setuptools ca-certificates groff less jq && \
+    pip --no-cache-dir install --upgrade pip awscli && \
+    rm -rf /var/cache/apk/*
 
-ENV AWS_PROFILE="default"
-#COPY entrypoint.sh /entrypoint.sh
-#RUN chmod +x /entrypoint.sh
-
-# Runs application as scout2 and not root. 
-#USER awsuser
-#WORKDIR /aws
-WORKDIR /home/awsuser
-
-ENTRYPOINT ["/bin/sh"] 
-#, "/entrypoint.sh"]
+WORKDIR /aws
