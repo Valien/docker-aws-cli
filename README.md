@@ -12,11 +12,11 @@ A few pre-requisites to get this to work properly:
 
     Key:
 
-         `--rm` --> removes container 
-         `-it` --> makes container interactive
-         `-v` --> mounts your local folder to the container
-         `:ro` --> makes that mounted volume read-only
-         `/bin/sh` --> the shell that Alpine uses
+    * `--rm` --> removes container 
+    * `-it` --> makes container interactive
+    * `-v` --> mounts your local folder to the container
+    * `:ro` --> makes that mounted volume read-only
+    * `/bin/sh` --> the shell that Alpine uses
 
 * You can run this container two ways:
     1. Interactive - drops you into the container and you run your AWS commands as necessary
