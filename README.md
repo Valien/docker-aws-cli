@@ -1,16 +1,22 @@
-# docker-scout2
-Dockerized AWS CLI Tools
+# Dockerized AWS CLI Tools
 
-This image will let you run AWS CLI tools without installing AWSCLI on your local machine.
+This image will let you run AWS CLI tools without installing the AWS CLI on your local machine.
 
 A few pre-requisites to get this to work properly:
 
-* You need your AWS credentials. See this http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html to set it up. You do not have to have AWS CLI installed on your system but for this container to work you will need to have the config and credentials file ready to be read.
+* You need your AWS credentials. See this [link](http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html) to set it up. You do not have to have AWS CLI installed on your system but for this container to work you will need to have the config and credentials file ready to be read.
 
 * Once your AWS creds are ready then run this command:
-    `docker run --rm -v <path to your credentials>/.aws/:/root/.aws:ro  valien/docker-aws-cli "/bin/sh"`
 
-    What this does is run the docker image (or pulls it if you don't have it cached), then mounts your aws credentials to the container. Runs the `Scout2.py` application, outputs the report.html and then tears down the container upon finishing.
+    `docker run --rm -it -v <path to your credentials>/.aws/:/root/.aws:ro  valien/docker-aws-cli "/bin/sh"`
+
+    Key:
+
+         `--rm` --> removes container 
+         `-it` --> makes container interactive
+         `-v` --> mounts your local folder to the container
+         `:ro` --> makes that mounted volume read-only
+         `/bin/sh` --> the shell that Alpine uses
 
 * You can run this container two ways:
     1. Interactive - drops you into the container and you run your AWS commands as necessary
