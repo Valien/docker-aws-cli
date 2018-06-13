@@ -1,6 +1,6 @@
 FROM alpine:latest
 
-MAINTAINER Allen Vailliencourt <allen.vailliencourt@forty8fiftylabs.com>
+LABEL maintainer="Allen Vailliencourt <allen.vailliencourt@forty8fiftylabs.com>"
 
 RUN apk --no-cache update && \
     apk --no-cache add python py-pip py-setuptools ca-certificates groff less jq && \
